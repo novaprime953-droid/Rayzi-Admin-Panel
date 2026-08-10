@@ -21,14 +21,14 @@ export const signupAdmin = (signup) => (dispatch) => {
       }
     })
     .catch((error) => {
-      Toast("error", error);
       console.log(error);
+      Toast("error", error.response ? error.response.data.message : error.message);
     });
 };
 
 export const login = (data) => (dispatch) => {
   axios
-    .post("admin/login", data)
+    .post("/admin/login", data)
     .then((res) => {
       if (res.data.status) {
         Toast("success", "You have successfully logged in Lumora.");
@@ -40,13 +40,15 @@ export const login = (data) => (dispatch) => {
         Toast("error", res.data.message);
       }
     })
-    .catch((error) =>{
+    .catch((error) => {
+      console.log(error);
+      Toast("error", error.response ? error.response.data.message : error.message);
     });
 };
 
 export const sendEmail = (data) => (dispatch) => {
   axios
-    .post("admin/sendEmail", data)
+    .post("/admin/sendEmail", data)
     .then((res) => {
       if (res.data.status) {
         Toast(
@@ -62,7 +64,7 @@ export const sendEmail = (data) => (dispatch) => {
 
 export const getProfile = () => (dispatch) => {
   axios
-    .get("admin/profile")
+    .get("/admin/profile")
     .then((res) => {
     
       if (res.data.status) {
@@ -78,7 +80,7 @@ export const getProfile = () => (dispatch) => {
 
 export const changePassword = (data) => (dispatch) => {
   axios
-    .put("admin", data)
+    .put("/admin", data)
     .then((res) => {
       if (res.data.status) {
         Toast("success", "Password changed successfully.");
@@ -94,7 +96,7 @@ export const changePassword = (data) => (dispatch) => {
 };
 export const updateNameEmail = (data) => (dispatch) => {
   axios
-    .patch("admin", data)
+    .patch("/admin", data)
     .then((res) => {
       if (res.data.status) {
         Toast("success", "Profile updated successfully.");
@@ -125,7 +127,7 @@ export const updateCode = (signup) => (dispatch) => {
       }
     })
     .catch((error) => {
-      Toast("error", error);
       console.log(error);
+      Toast("error", error.response ? error.response.data.message : error.message);
     });
 };
