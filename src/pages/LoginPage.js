@@ -11,8 +11,8 @@ import { login } from "../store/admin/action";
 
 
 const LoginPage = (props) => {
-  const [email, setEmail] = useState("demo@admin.com");
-  const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState("novaprime953@gmail.com");
+  const [password, setPassword] = useState("(hmh874)");
   const [error, setError] = useState({
     email: "",
     password: "",
