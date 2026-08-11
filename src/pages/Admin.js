@@ -43,6 +43,8 @@ import AcceptedRedeemTable from "../component/table/AcceptedRedeem";
 import DeclineRedeemTable from "../component/table/DeclineRedeem";
 import ReportedUserTable from "../component/table/ReportedUser";
 import StickerTable from "../component/table/Sticker";
+import RoleTable from "../component/table/Role";
+import AgencyTable from "../component/table/Agency";
 // import FakeUser from "../component/table/FakeUser";
 // import FakeUserPage from "../component/dialog/FakeUserPage";
 // import FakePost from "../component/table/FakePost";
@@ -292,6 +294,16 @@ const Admin = () => {
                 exact
                 component={FakeComment}
               /> 
+              <Route
+                path={`${location.path}/role`}
+                exact
+                component={RoleTable}
+              />
+              <Route
+                path={`${location.path}/agency`}
+                exact
+                component={AgencyTable}
+              />
             </Switch>
             <Spinner />
           </div>

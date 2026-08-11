@@ -118,6 +118,46 @@ const Navbar = () => {
           <li
             data-bs-toggle="tooltip"
             data-bs-placement="top"
+            title="Management"
+            className="pointer-cursor"
+          >
+            <a
+              href={() => false}
+              className="add-collapse-margin"
+              style={{ marginLeft: 0 }}
+            >
+              <span className="sidenav__icon">
+                <i data-feather="shield"></i>
+              </span>
+              Management
+              <i class="fas fa-chevron-right dropdown-icon"></i>
+            </a>
+            <ul class="">
+              <li>
+                <Link to="/admin/role" className={`${classes.navLink}`}>
+                  <i class="far fa-circle"></i>Roles
+                </Link>
+              </li>
+              <li>
+                <Link to="/admin/bd" className={`${classes.navLink}`}>
+                  <i class="far fa-circle"></i>BDs
+                </Link>
+              </li>
+              <li>
+                <Link to="/admin/agency" className={`${classes.navLink}`}>
+                  <i class="far fa-circle"></i>Agencies
+                </Link>
+              </li>
+              <li>
+                <Link to="/admin/commission" className={`${classes.navLink}`}>
+                  <i class="far fa-circle"></i>Commissions
+                </Link>
+              </li>
+            </ul>
+          </li>
+          <li
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
             title="Plan"
             className="pointer-cursor"
           >
