@@ -135,7 +135,27 @@ const Navbar = () => {
             <ul class="">
               <li>
                 <Link to="/admin/role" className={`${classes.navLink}`}>
-                  <i class="far fa-circle"></i>Roles
+                  <i class="far fa-circle"></i>Role Assignment
+                </Link>
+              </li>
+              <li>
+                <Link to="/admin/official" className={`${classes.navLink}`}>
+                  <i class="far fa-circle"></i>Officials
+                </Link>
+              </li>
+              <li>
+                <Link to="/admin/manager" className={`${classes.navLink}`}>
+                  <i class="far fa-circle"></i>Managers
+                </Link>
+              </li>
+              <li>
+                <Link to="/admin/superAdmin" className={`${classes.navLink}`}>
+                  <i class="far fa-circle"></i>Super Admins
+                </Link>
+              </li>
+              <li>
+                <Link to="/admin/bdLeader" className={`${classes.navLink}`}>
+                  <i class="far fa-circle"></i>BD Leaders
                 </Link>
               </li>
               <li>
@@ -144,8 +164,23 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/admin/bd-panel" className={`${classes.navLink}`}>
+                  <i class="far fa-circle"></i>BD Panel (Invites)
+                </Link>
+              </li>
+              <li>
                 <Link to="/admin/agency" className={`${classes.navLink}`}>
                   <i class="far fa-circle"></i>Agencies
+                </Link>
+              </li>
+              <li>
+                <Link to="/admin/host" className={`${classes.navLink}`}>
+                  <i class="far fa-circle"></i>Hosts
+                </Link>
+              </li>
+              <li>
+                <Link to="/admin/coinSeller" className={`${classes.navLink}`}>
+                  <i class="far fa-circle"></i>Coin Sellers
                 </Link>
               </li>
               <li>

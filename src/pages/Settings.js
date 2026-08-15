@@ -39,6 +39,31 @@ const Setting = (props) => {
   const [stripeSwitch, setStripeSwitch] = useState(false);
   const [isAppActive, setIsAppActive] = useState(false);
 
+  // New Gateways & Rates
+  const [paypalAndroidEnabled, setPaypalAndroidEnabled] = useState(false);
+  const [paypalClientId, setPaypalClientId] = useState("");
+  const [paypalSecretKey, setPaypalSecretKey] = useState("");
+  const [razorPayAndroidEnabled, setRazorPayAndroidEnabled] = useState(false);
+  const [razorPayId, setRazorPayId] = useState("");
+  const [razorSecretKey, setRazorSecretKey] = useState("");
+  const [cashfreeAndroidEnabled, setCashfreeAndroidEnabled] = useState(false);
+  const [cashfreeClientId, setCashfreeClientId] = useState("");
+  const [cashfreeClientSecret, setCashfreeClientSecret] = useState("");
+  const [paystackAndroidEnabled, setPaystackAndroidEnabled] = useState(false);
+  const [paystackPublicKey, setPaystackPublicKey] = useState("");
+  const [paystackSecretKey, setPaystackSecretKey] = useState("");
+  const [isFlutterwaveEnabled, setIsFlutterwaveEnabled] = useState(false);
+  const [flutterWaveId, setFlutterWaveId] = useState("");
+
+  const [femaleCallCharge, setFemaleCallCharge] = useState(0);
+  const [maleCallCharge, setMaleCallCharge] = useState(0);
+  const [audioCallChargeMale, setAudioCallChargeMale] = useState(0);
+  const [audioCallChargeFemale, setAudioCallChargeFemale] = useState(0);
+  const [bothRandomCallRate, setBothRandomCallRate] = useState(0);
+  const [maleRandomCallRate, setMaleRandomCallRate] = useState(0);
+  const [femaleRandomCallRate, setFemaleRandomCallRate] = useState(0);
+  const [locationApiKey, setLocationApiKey] = useState("");
+
   const [minRCoinForCaseOut, setMinRCoinForCaseOut] = useState(0);
   const [paymentGateway, setPaymentGateway] = useState([]);
   const [selectedValue, setSelectedValue] = useState([]);
@@ -97,6 +122,32 @@ const Setting = (props) => {
       setLoginBonus(setting.loginBonus);
       setMinRCoinForCaseOut(setting.minRcoinForCashOut);
       setPaymentGateway(setting.paymentGateway);
+
+      // Set New Gateways
+      setPaypalAndroidEnabled(setting.paypalAndroidEnabled);
+      setPaypalClientId(setting.paypalClientId);
+      setPaypalSecretKey(setting.paypalSecretKey);
+      setRazorPayAndroidEnabled(setting.razorPayAndroidEnabled);
+      setRazorPayId(setting.razorPayId);
+      setRazorSecretKey(setting.razorSecretKey);
+      setCashfreeAndroidEnabled(setting.cashfreeAndroidEnabled);
+      setCashfreeClientId(setting.cashfreeClientId);
+      setCashfreeClientSecret(setting.cashfreeClientSecret);
+      setPaystackAndroidEnabled(setting.paystackAndroidEnabled);
+      setPaystackPublicKey(setting.paystackPublicKey);
+      setPaystackSecretKey(setting.paystackSecretKey);
+      setIsFlutterwaveEnabled(setting.isFlutterwaveEnabled);
+      setFlutterWaveId(setting.flutterWaveId);
+
+      // Set New Rates
+      setFemaleCallCharge(setting.femaleCallCharge);
+      setMaleCallCharge(setting.maleCallCharge);
+      setAudioCallChargeMale(setting.audioCallChargeMale);
+      setAudioCallChargeFemale(setting.audioCallChargeFemale);
+      setBothRandomCallRate(setting.bothRandomCallRate);
+      setMaleRandomCallRate(setting.maleRandomCallRate);
+      setFemaleRandomCallRate(setting.femaleRandomCallRate);
+      setLocationApiKey(setting.locationApiKey);
 
       setSelectedValue(data);
     }
@@ -170,6 +221,25 @@ const Setting = (props) => {
       rCoinForDiamond: rCoinForDiamond === "" ? 1 : rCoinForDiamond,
       paymentGateway,
       minRcoinForCaseOut: minRCoinForCaseOut,
+
+      // New Sync Data
+      paypalClientId,
+      paypalSecretKey,
+      razorPayId,
+      razorSecretKey,
+      cashfreeClientId,
+      cashfreeClientSecret,
+      paystackPublicKey,
+      paystackSecretKey,
+      flutterWaveId,
+      femaleCallCharge,
+      maleCallCharge,
+      audioCallChargeMale,
+      audioCallChargeFemale,
+      bothRandomCallRate,
+      maleRandomCallRate,
+      femaleRandomCallRate,
+      locationApiKey,
     };
 
     props.updateSetting(mongoId, data);
@@ -700,6 +770,184 @@ const Setting = (props) => {
                 >
                   Submit
                 </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title d-flex justify-content-between">
+                PayPal
+                <label className="switch">
+                  <input type="checkbox" checked={paypalAndroidEnabled} onChange={() => handleSwitch_("paypal")} />
+                  <span className="slider"></span>
+                </label>
+              </h5>
+              <form>
+                <div className="mb-3">
+                  <label className="form-label">Client ID</label>
+                  <input type="text" className="form-control" value={paypalClientId} onChange={(e) => setPaypalClientId(e.target.value)} />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Secret Key</label>
+                  <input type="text" className="form-control" value={paypalSecretKey} onChange={(e) => setPaypalSecretKey(e.target.value)} />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title d-flex justify-content-between">
+                RazorPay
+                <label className="switch">
+                  <input type="checkbox" checked={razorPayAndroidEnabled} onChange={() => handleSwitch_("razorpay")} />
+                  <span className="slider"></span>
+                </label>
+              </h5>
+              <form>
+                <div className="mb-3">
+                  <label className="form-label">RazorPay ID</label>
+                  <input type="text" className="form-control" value={razorPayId} onChange={(e) => setRazorPayId(e.target.value)} />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Secret Key</label>
+                  <input type="text" className="form-control" value={razorSecretKey} onChange={(e) => setRazorSecretKey(e.target.value)} />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title d-flex justify-content-between">
+                Cashfree
+                <label className="switch">
+                  <input type="checkbox" checked={cashfreeAndroidEnabled} onChange={() => handleSwitch_("cashfree")} />
+                  <span className="slider"></span>
+                </label>
+              </h5>
+              <form>
+                <div className="mb-3">
+                  <label className="form-label">Client ID</label>
+                  <input type="text" className="form-control" value={cashfreeClientId} onChange={(e) => setCashfreeClientId(e.target.value)} />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Client Secret</label>
+                  <input type="text" className="form-control" value={cashfreeClientSecret} onChange={(e) => setCashfreeClientSecret(e.target.value)} />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title d-flex justify-content-between">
+                Paystack
+                <label className="switch">
+                  <input type="checkbox" checked={paystackAndroidEnabled} onChange={() => handleSwitch_("paystack")} />
+                  <span className="slider"></span>
+                </label>
+              </h5>
+              <form>
+                <div className="mb-3">
+                  <label className="form-label">Public Key</label>
+                  <input type="text" className="form-control" value={paystackPublicKey} onChange={(e) => setPaystackPublicKey(e.target.value)} />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Secret Key</label>
+                  <input type="text" className="form-control" value={paystackSecretKey} onChange={(e) => setPaystackSecretKey(e.target.value)} />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title d-flex justify-content-between">
+                Flutterwave
+                <label className="switch">
+                  <input type="checkbox" checked={isFlutterwaveEnabled} onChange={() => handleSwitch_("flutterwave")} />
+                  <span className="slider"></span>
+                </label>
+              </h5>
+              <form>
+                <div className="mb-3">
+                  <label className="form-label">Secret Key / ID</label>
+                  <input type="text" className="form-control" value={flutterWaveId} onChange={(e) => setFlutterWaveId(e.target.value)} />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">Location & Maps</h5>
+              <form>
+                <div className="mb-3">
+                  <label className="form-label">Location API Key (Mapbox/Google)</label>
+                  <input type="text" className="form-control" value={locationApiKey} onChange={(e) => setLocationApiKey(e.target.value)} />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 className="mb-3 text-white">Call Rate Setting</h3>
+      <div className="row">
+        <div className="col-md-12">
+          <div className="card">
+            <div className="card-body">
+              <div className="row">
+                <div className="col-md-3">
+                  <label className="form-label">Male Call Charge</label>
+                  <input type="number" className="form-control" value={maleCallCharge} onChange={(e) => setMaleCallCharge(e.target.value)} />
+                </div>
+                <div className="col-md-3">
+                  <label className="form-label">Female Call Charge</label>
+                  <input type="number" className="form-control" value={femaleCallCharge} onChange={(e) => setFemaleCallCharge(e.target.value)} />
+                </div>
+                <div className="col-md-3">
+                  <label className="form-label">Audio Call (Male)</label>
+                  <input type="number" className="form-control" value={audioCallChargeMale} onChange={(e) => setAudioCallChargeMale(e.target.value)} />
+                </div>
+                <div className="col-md-3">
+                  <label className="form-label">Audio Call (Female)</label>
+                  <input type="number" className="form-control" value={audioCallChargeFemale} onChange={(e) => setAudioCallChargeFemale(e.target.value)} />
+                </div>
+              </div>
+              <div className="row mt-3">
+                <div className="col-md-4">
+                  <label className="form-label">Random Call (Both)</label>
+                  <input type="number" className="form-control" value={bothRandomCallRate} onChange={(e) => setBothRandomCallRate(e.target.value)} />
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label">Random Call (Male)</label>
+                  <input type="number" className="form-control" value={maleRandomCallRate} onChange={(e) => setMaleRandomCallRate(e.target.value)} />
+                </div>
+                <div className="col-md-4">
+                  <label className="form-label">Random Call (Female)</label>
+                  <input type="number" className="form-control" value={femaleRandomCallRate} onChange={(e) => setFemaleRandomCallRate(e.target.value)} />
+                </div>
+              </div>
+              <div className="d-flex justify-content-end mt-4">
+                <button type="button" className="btn btn-danger" onClick={handleSubmit}>Save All Changes</button>
               </div>
             </div>
           </div>

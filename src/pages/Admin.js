@@ -45,6 +45,7 @@ import ReportedUserTable from "../component/table/ReportedUser";
 import StickerTable from "../component/table/Sticker";
 import RoleTable from "../component/table/Role";
 import AgencyTable from "../component/table/Agency";
+import BDPanel from "./BDPanel";
 // import FakeUser from "../component/table/FakeUser";
 // import FakeUserPage from "../component/dialog/FakeUserPage";
 // import FakePost from "../component/table/FakePost";
@@ -303,6 +304,11 @@ const Admin = () => {
                 path={`${location.path}/agency`}
                 exact
                 component={AgencyTable}
+              />
+              <Route
+                path={`${location.path}/bd-panel`}
+                exact
+                component={BDPanel}
               />
             </Switch>
             <Spinner />
